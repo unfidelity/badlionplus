@@ -45,7 +45,7 @@ public class Offhand extends Module {
     @Override public void onUpdate() {
         if (mc.player == null || mc.world == null) return;
         if (stopInGUI.getValBoolean() && mc.currentScreen != null) return;
-        if (soft.getValBoolean() && mc.player.getHeldItemOffhand() != null) return;
+        if (soft.getValBoolean() && (mc.player.getHeldItemOffhand() != null || !(mc.player.getHeldItemOffhand().getItem() == Items.AIR))) return;
 
         int itemSlot = getItemSlot();
         if (itemSlot == -1) return;
