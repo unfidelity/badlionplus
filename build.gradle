@@ -15,7 +15,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'com.github.johnrengelman.shadow'
 
-version = '1.4.4'
+version = '1.4.5'
 group = 'me.bon.badlionplus'
 archivesBaseName = 'badlionplus'
 
