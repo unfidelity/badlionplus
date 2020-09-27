@@ -2,18 +2,10 @@ package me.bon.badlionplus.module;
 
 import java.util.ArrayList;
 
+import me.bon.badlionplus.module.Combat.*;
 import org.lwjgl.opengl.GL11;
 
 import me.bon.badlionplus.event.Events.RenderEvent;
-import me.bon.badlionplus.module.Combat.AutoCrystal;
-import me.bon.badlionplus.module.Combat.AutoTotem;
-import me.bon.badlionplus.module.Combat.AutoTrap;
-import me.bon.badlionplus.module.Combat.AutoTrapBed;
-import me.bon.badlionplus.module.Combat.BedAura;
-import me.bon.badlionplus.module.Combat.BowSpam;
-import me.bon.badlionplus.module.Combat.Criticals;
-import me.bon.badlionplus.module.Combat.PacketAutoCity;
-import me.bon.badlionplus.module.Combat.Surround;
 import me.bon.badlionplus.module.Exploit.EChestBackPack;
 import me.bon.badlionplus.module.Exploit.NoHandshake;
 import me.bon.badlionplus.module.Hud.Arraylist;
@@ -43,6 +35,7 @@ public class ModuleManager {
     	//Combat
     	modules.add(new AutoCrystal());
     	modules.add(new AutoTotem());
+    	modules.add(new Offhand());
     	modules.add(new AutoTrap());
     	modules.add(new AutoTrapBed());
     	modules.add(new BedAura());
