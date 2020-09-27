@@ -46,9 +46,8 @@ public class FakePlayer extends Module {
         }
         Messages.sendMessagePrefix(String.format("%s has been spawned.", "jared2013"));
 
-        _fakePlayer.copyLocationAndAnglesFrom(mc.player);
-        _fakePlayer.rotationYawHead = mc.player.rotationYawHead;
-        mc.world.addEntityToWorld(-100, _fakePlayer);
+        mc.world.addEntityToWorld(_fakePlayer.getEntityId(), _fakePlayer);
+        _fakePlayer.attemptTeleport(mc.player.posX, mc.player.posY, mc.player.posZ); // moves fake player to your current position
     }
 
     @Override
