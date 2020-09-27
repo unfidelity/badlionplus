@@ -1,0 +1,86 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url = 'https://files.minecraftforge.net/maven' }
+        maven { url = 'https://repo.spongepowered.org/maven' }
+        maven { url = 'https://plugins.gradle.org/m2' }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+        classpath 'org.spongepowered:mixingradle:0.6-SNAPSHOT'
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.4'
+    }
+}
+apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'org.spongepowered.mixin'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+version = '1.4.4'
+group = 'me.bon.badlionplus'
+archivesBaseName = 'badlionplus'
+
+sourceCompatibility = targetCompatibility = '1.8'
+compileJava {
+    sourceCompatibility = targetCompatibility = '1.8'
+}
+
+minecraft {
+    version = '1.12.2-14.23.5.2847'
+    runDir = 'run'
+    coreMod = 'me.bon.badlionplus.mixin.MixinLoader'
+    mappings = 'stable_39'
+}
+
+jar.manifest.attributes(
+        'FMLCorePluginContainsFMLMod': true,
+        'FMLCorePlugin': 'me.bon.badlionplus.mixin.MixinLoader',
+        'ForceLoadAsMod': true,
+        'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker'
+)
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven { url = 'https://repo.spongepowered.org/maven' }
+    maven { url = 'https://jitpack.io' }
+}
+
+dependencies {
+    compile 'club.minnced:java-discord-rpc:2.0.2'
+    compile 'org.spongepowered:mixin:0.8.1-SNAPSHOT'
+    compile 'com.github.ZeroMemes:Alpine:1.5'
+}
+
+mixin {
+    add sourceSets.main, 'mixins.badlionplus.refmap.json'
+}
+
+shadowJar {
+    exclude 'dummyThing'
+    exclude 'LICENSE.txt'
+
+    classifier = ''
+}
+build.dependsOn(shadowJar)
+
+reobf {
+    shadowJar {
+        mappingType = 'SEARGE'
+        classpath = sourceSets.main.compileClasspath
+    }
+}
+
+processResources {
+    inputs.property 'version', project.version
+    inputs.property 'mcversion', project.minecraft.version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}

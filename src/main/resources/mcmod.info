@@ -1,0 +1,16 @@
+[
+{
+  "modid": "badlionplus",
+  "name": "Badlion+",
+  "description": "Swag anarchy utility mod.",
+  "version": "1.4.3",
+  "mcversion": "1.12.2",
+  "url": "https://discord.gg/CyDwds3",
+  "updateUrl": "",
+  "authorList": ["bon"],
+  "credits": "bon for the dope client, a mix of Osiris+ and Obamahack rewrite for the module/command managers and config savers, and a variety of clients for some modules",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

@@ -1,0 +1,16 @@
+{
+    "required": true,
+    "package": "me.bon.badlionplus.mixin.Mixins",
+    "refmap": "mixins.badlionplus.refmap.json",
+    "minVersion": "0.7.3",
+    "compatibilityLevel": "JAVA_8",
+    "mixins": [
+        "MixinC00Handshake",
+        "MixinGuiMainMenu",
+        "MixinNetworkManager",
+        "MixinPlayerControllerMP",
+        "MixinMovementInputFromOptions",
+        "MixinWorld"
+        
+    ]
+}
