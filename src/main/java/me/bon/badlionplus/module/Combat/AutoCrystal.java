@@ -63,6 +63,7 @@ public class AutoCrystal extends Module {
 	Setting faceplace;
 	Setting faceplaceHealth;
 	Setting faceplaceCheck;
+	Setting render;
 	Setting r;
 	Setting g;
 	Setting b;
@@ -78,6 +79,7 @@ public class AutoCrystal extends Module {
 		rSetting(newServ = new Setting("1.13+ Mode", this, false, "newServ"));
 		rSetting(faceplace = new Setting("FacePlace Mode", this, false, "faceplace"));
 		rSetting(faceplaceCheck = new Setting("Disable FP w/ Sword", this, true, "faceplacewsword"));
+		rSetting(render = new Setting("Render (BROKEN!!!)", this, false, "brokenrender"));
 		
 		rSetting(placeRange = new Setting("Place Range", this, 8, 1, 9, true, "placerange"));
 		rSetting(breakRange = new Setting("Break Range", this, 8, 1, 9, true, "breakrange"));
@@ -527,14 +529,14 @@ public class AutoCrystal extends Module {
     
     @Override
     public void render(RenderEvent event) {
-
+	if(render.getValBoolean()) {
         if (renderBlockInit == null) return;
 
             outline = false;
             solid = true;
 
         render_block(renderBlockInit);
-
+	}
     }
     
     public void render_block(BlockPos pos) {
