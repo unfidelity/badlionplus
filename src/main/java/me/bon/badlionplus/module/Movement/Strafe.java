@@ -4,7 +4,9 @@ import me.bon.badlionplus.module.Category;
 import me.bon.badlionplus.module.Module;
 import me.bon.badlionplus.setting.Setting;
 import net.minecraft.util.math.MathHelper;
-
+//credit to 086
+//another placeholder module that ill probably end up remaking
+//but for now it works aight
 public class Strafe extends Module {
 	public Strafe() {
 		super("Strafe", Category.Movement);
@@ -54,13 +56,13 @@ public class Strafe extends Module {
                 float f = (float)Math.toRadians(yaw);
                 if(jump.getValBoolean()) {
                     mc.player.motionY = 0.405;
-                    mc.player.motionX -= (double) (MathHelper.sin(f) * 0.0154f) * forward;
-                    mc.player.motionZ += (double) (MathHelper.cos(f) * 0.0154f) * forward;
+                    mc.player.motionX -= (double) (MathHelper.sin(f) * 0.0152f) * forward;
+                    mc.player.motionZ += (double) (MathHelper.cos(f) * 0.0152f) * forward;
                 } else {
                     if(mc.gameSettings.keyBindJump.isPressed()){
                         mc.player.motionY = 0.405;
-                        mc.player.motionX -= (double) (MathHelper.sin(f) * 0.069f) * forward;
-                        mc.player.motionZ += (double) (MathHelper.cos(f) * 0.069f) * forward;
+                        mc.player.motionX -= (double) (MathHelper.sin(f) * 0.0685f) * forward;
+                        mc.player.motionZ += (double) (MathHelper.cos(f) * 0.0685f) * forward;
                     }
                 }
             } else {
