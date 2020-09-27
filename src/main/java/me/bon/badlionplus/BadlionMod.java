@@ -2,6 +2,7 @@ package me.bon.badlionplus;
 
 import java.awt.Font;
 
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 
@@ -60,18 +61,22 @@ public class BadlionMod
     public void preInit(FMLPreInitializationEvent event) {
     	Display.setTitle(NAME + " v" + VERSION );
     	friends = new Friends();
+        settingsManager = new SettingsManager();
+        moduleManager = new ModuleManager();
     }
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
-    	settingsManager = new SettingsManager();
-    	moduleManager = new ModuleManager();
     	configManager = new ConfigManager();
     	fontRenderer = new CFontRenderer(new Font("Comfortaa", Font.PLAIN, 20), true, false);
     	CommandManager.init();
-    	MinecraftForge.EVENT_BUS.register(new CommandManager());
-    	MinecraftForge.EVENT_BUS.register(new Criticals());
-    	MinecraftForge.EVENT_BUS.register(this);
+    }
+
+    @EventHandler
+    public void postInit(FMLPostInitializationEvent event) {
+        MinecraftForge.EVENT_BUS.register(new CommandManager());
+        MinecraftForge.EVENT_BUS.register(new Criticals());
+        MinecraftForge.EVENT_BUS.register(this);
     }
     
     @SubscribeEvent
