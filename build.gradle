@@ -46,9 +46,15 @@ repositories {
 }
 
 dependencies {
-    compile 'club.minnced:java-discord-rpc:2.0.2'
-    compile 'org.spongepowered:mixin:0.8.1-SNAPSHOT'
-    compile 'com.github.ZeroMemes:Alpine:1.5'
+    compile "club.minnced:java-discord-rpc:2.0.2"
+    compile ("org.spongepowered:mixin:0.7.11-SNAPSHOT") {
+      exclude module: 'launchwrapper'
+      exclude module: 'guava'
+      exclude module: 'gson'
+      exclude module: 'commons-io'
+      exclude module: 'log4j-core'
+    }
+    compile "com.github.ZeroMemes:Alpine:1.5"
 }
 
 mixin {
