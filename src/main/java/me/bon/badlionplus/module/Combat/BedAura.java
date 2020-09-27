@@ -93,7 +93,6 @@ public class BedAura extends Module {
 		//this is gay ^
 		//this should already happen on the onEnable() in module.class (since its overriding it)
 		//but it doesnt
-		//yet unregister overrides fine???
 
 		
 		firstRun = true;
