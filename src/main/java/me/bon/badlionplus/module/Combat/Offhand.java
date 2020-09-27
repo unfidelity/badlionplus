@@ -46,12 +46,14 @@ public class Offhand extends Module {
         if (mc.player == null || mc.world == null) return;
         if (stopInGUI.getValBoolean() && mc.currentScreen != null) return;
         if (soft.getValBoolean() && (mc.player.getHeldItemOffhand() != null || !(mc.player.getHeldItemOffhand().getItem() == Items.AIR))) return;
+        if (mc.player.openContainer != null && mc.player.openContainer.windowId != mc.player.inventoryContainer.windowId) return;
 
         int itemSlot = getItemSlot();
         if (itemSlot == -1) return;
 
         mc.playerController.windowClick(mc.player.inventoryContainer.windowId, itemSlot, 0, ClickType.PICKUP, mc.player);
         mc.playerController.windowClick(mc.player.inventoryContainer.windowId, 45, 0, ClickType.PICKUP, mc.player);
+        mc.playerController.windowClick(mc.player.inventoryContainer.windowId, itemSlot, 0, ClickType.PICKUP, mc.player);
     }
 
     private int getItemSlot() {
@@ -72,6 +74,8 @@ public class Offhand extends Module {
                         itemToSearch = Items.BED;
                         break;
                 }
+
+                if (itemToSearch == mc.player.getHeldItemOffhand().getItem()) return -1;
             }
         }
 
