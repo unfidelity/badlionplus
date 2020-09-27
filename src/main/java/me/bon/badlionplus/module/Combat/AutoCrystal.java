@@ -527,17 +527,20 @@ public class AutoCrystal extends Module {
         return false;
     }
     
-    @Override
-    public void render(RenderEvent event) {
-	if(render.getValBoolean()) {
-        if (renderBlockInit == null) return;
+    //@Override
+    //public void render(RenderEvent event) {
+	//if(render.getValBoolean()) {
+        //if (renderBlockInit == null) return;
 
-            outline = false;
-            solid = true;
+            //outline = false;
+            //solid = true;
 
-        render_block(renderBlockInit);
-	}
-    }
+        //render_block(renderBlockInit);
+	//}
+    //}
+	
+	//temporarily commented out since it was apparently causing extreme fps drops and crashes
+	//hopefully we are good now
     
     public void render_block(BlockPos pos) {
         BlockPos render_block = (pos);
